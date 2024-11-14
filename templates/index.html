@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Máquinas</title>
+</head>
+<body>
+    <h1>Máquinas</h1>
+    <ul id="machines"></ul>
+
+    <script>
+        fetch('/machines')
+            .then(response => response.json())
+            .then(data => {
+                const list = document.getElementById('machines');
+                data.forEach(machine => {
+                    const item = document.createElement('li');
+                    item.textContent = `${machine.hostname} - ${machine.operatingSystem}`;
+                    list.appendChild(item);
+                });
+            });
+    </script>
+</body>
+</html>
